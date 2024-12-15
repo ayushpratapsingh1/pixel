@@ -50,10 +50,16 @@ export function Testimonial() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <p className="text-lg italic text-gray-700">"{testimonials[currentIndex].text}"</p>
+          <p className="text-lg italic text-gray-700">
+            &quot;{testimonials[currentIndex].text}&quot;
+          </p>
           <div className="mt-4">
-            <h3 className="text-md font-semibold text-gray-800">{testimonials[currentIndex].author}</h3>
-            <p className="text-sm text-gray-600">{testimonials[currentIndex].position}</p>
+            <h3 className="text-md font-semibold text-gray-800">
+              {testimonials[currentIndex].author}
+            </h3>
+            <p className="text-sm text-gray-600">
+              {testimonials[currentIndex].position}
+            </p>
           </div>
         </motion.div>
       </AnimatePresence>
