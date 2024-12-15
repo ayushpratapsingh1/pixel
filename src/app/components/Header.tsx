@@ -10,7 +10,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
-  // Handle scroll to detect active section and scroll-to-top visibility
+  // Handle scroll to detect active section
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'services', 'projects', 'contact'];
@@ -105,12 +105,12 @@ const Header = () => {
         {/* Navigation Links for Desktop */}
         <ul className="hidden md:flex space-x-16">
           {[
-            { id: 'home', icon: Home, label: 'Home' },
-            { id: 'about', icon: User, label: 'About' },
-            { id: 'services', icon: Briefcase, label: 'Services' },
-            { id: 'projects', icon: FolderOpen, label: 'Projects' },
-            { id: 'contact', icon: MessageSquare, label: 'Contact' },
-          ].map(({ id, icon: Icon}) => (
+            { id: 'home', icon: Home },
+            { id: 'about', icon: User },
+            { id: 'services', icon: Briefcase },
+            { id: 'projects', icon: FolderOpen },
+            { id: 'contact', icon: MessageSquare },
+          ].map(({ id, icon: Icon }) => (
             <li key={id}>
               <Link href={`#${id}`} className="focus:outline-none">
                 <motion.div
@@ -153,12 +153,12 @@ const Header = () => {
           >
             <ul className="flex flex-col space-y-8 py-10 items-center justify-center h-full">
               {[
-                { id: 'home', label: 'Home' },
-                { id: 'about', label: 'About' },
-                { id: 'services', label: 'Services' },
-                { id: 'projects', label: 'Projects' },
-                { id: 'contact', label: 'Contact' },
-              ].map(({ id, label }) => (
+                { id: 'home' },
+                { id: 'about' },
+                { id: 'services' },
+                { id: 'projects' },
+                { id: 'contact' },
+              ].map(({ id }) => (
                 <li key={id} className="w-full text-center">
                   <Link
                     href={`#${id}`}
@@ -173,7 +173,7 @@ const Header = () => {
                       whileTap={{ scale: 0.95 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {label}
+                      {id.charAt(0).toUpperCase() + id.slice(1)}
                     </motion.div>
                   </Link>
                 </li>

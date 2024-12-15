@@ -24,11 +24,10 @@ export function About() {
             Pixel Dev is a cutting-edge digital studio specializing in creating stunning websites, logos, and digital experiences. Our team of skilled designers and developers are passionate about turning your vision into reality.
           </p>
           <p className="text-lg text-purple-100">
-            With a focus on innovation and creativity, we deliver exceptional results that help your business stand out in the digital landscape. From personal portfolios to corporate websites, we're here to elevate your online presence.
+            With a focus on innovation and creativity, we deliver exceptional results that help your business stand out in the digital landscape. From personal portfolios to corporate websites, we&apos;re here to elevate your online presence.
           </p>
         </motion.div>
       </motion.div>
     </section>
   )
 }
-
