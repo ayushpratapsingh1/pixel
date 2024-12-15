@@ -39,7 +39,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <Zap className="mr-2" />
             <Link href="#contact">Get Started</Link>
@@ -50,7 +50,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <Link href="#services">Explore Services</Link>
             <ArrowRight className="ml-2" />

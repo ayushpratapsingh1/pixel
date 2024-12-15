@@ -5,7 +5,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="bg-purple-800 bg-opacity-50 backdrop-blur-md text-white py-8">
+    <footer className="bg-black bg-opacity-50 backdrop-blur-md text-white py-8">
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap justify-between items-center">
           <motion.div
