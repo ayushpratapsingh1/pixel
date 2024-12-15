@@ -7,7 +7,6 @@ import Link from 'next/link';
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
-  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -24,7 +23,6 @@ const Header = () => {
         return false;
       });
       if (currentSection) setActiveSection(currentSection);
-      setShowScrollTop(window.pageYOffset > 300);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -112,7 +110,7 @@ const Header = () => {
             { id: 'services', icon: Briefcase, label: 'Services' },
             { id: 'projects', icon: FolderOpen, label: 'Projects' },
             { id: 'contact', icon: MessageSquare, label: 'Contact' },
-          ].map(({ id, icon: Icon, label }) => (
+          ].map(({ id, icon: Icon}) => (
             <li key={id}>
               <Link href={`#${id}`} className="focus:outline-none">
                 <motion.div
