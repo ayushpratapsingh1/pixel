@@ -58,66 +58,43 @@ export function Works() {
   )
 }
 
-function WorkCard({ work, onClick }) {
+function WorkCard({ work, onClick }: { work: any, onClick: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-purple-900 bg-opacity-30 backdrop-blur rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
+      className="bg-purple-900 bg-opacity-30 backdrop-blur p-6 rounded-lg shadow-xl text-center hover:bg-purple-800 hover:bg-opacity-50 transition-colors duration-300"
+      onClick={onClick}
     >
-      <Image src={work.image} alt={work.title} width={400} height={300} className="w-full h-48 object-cover" />
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2 font-poppins text-purple-100">{work.title}</h3>
-        <p className="text-purple-200 mb-4">{work.description}</p>
-        <motion.button
-          onClick={onClick}
-          className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold hover:bg-purple-700 transition duration-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Learn More
-          <ArrowRight className="ml-2 w-4 h-4" />
-        </motion.button>
+      <div className="flex justify-center mb-4">
+        <img src={work.image} alt={work.title} className="w-12 h-12 text-purple-300" />
+      </div>
+      <h3 className="text-xl font-semibold mb-2 font-poppins text-purple-100">{work.title}</h3>
+      <p className="text-purple-200">{work.description}</p>
+    </motion.div>
+  )
+}
+
+function WorkDetail({ work, onClose }: { work: any, onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4"
+    >
+      <div className="bg-white p-6 rounded-lg shadow-xl relative">
+        <button onClick={onClose} className="absolute top-4 right-4 text-black hover:text-purple-300 transition-colors">
+          Close
+        </button>
+        <img src={work.image} alt={work.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+        <h3 className="text-2xl font-bold mb-4 font-poppins text-purple-100">{work.title}</h3>
+        <p className="text-purple-200 mb-6">{work.fullDescription}</p>
+        <a href={work.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold hover:bg-purple-700 transition duration-300">
+          Visit Live Site
+        </a>
       </div>
     </motion.div>
   )
 }
-
-function WorkDetail({ work, onClose }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-md flex items-center justify-center z-50 p-4"
-    >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-purple-900 bg-opacity-80 backdrop-blur rounded-xl p-6 max-w-2xl w-full relative"
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-white hover:text-purple-300 transition-colors"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        <h3 className="text-2xl font-bold mb-4 font-poppins text-purple-100">{work.title}</h3>
-        <Image src={work.image} alt={work.title} width={400} height={300} className="w-full h-48 object-cover rounded-lg mb-4" />
-        <p className="text-purple-200 mb-6">{work.fullDescription}</p>
-        <a
-          href={work.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold hover:bg-purple-700 transition duration-300"
-        >
-          Visit Live Site
-          <ExternalLink className="ml-2 w-4 h-4" />
-        </a>
-      </motion.div>
-    </motion.div>
-  )
-}
-

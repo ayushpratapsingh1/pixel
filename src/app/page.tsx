@@ -9,7 +9,7 @@ import { Testimonial } from './components/Testimonial'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { ScrollToTop } from './components/ScrollToTop'
-import ParticlesBackground from './components/ParticlesBackground'
+import ParticlesBackground from './components/ParticlesBackground' // Ensure this file exists and is correctly exported
 
 export default function Home() {
   return (

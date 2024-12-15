@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
-import { Engine, Container } from "tsparticles-slim";
+import { Engine, Container } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 
 const ParticlesBackground: React.FC = () => {
@@ -8,7 +8,7 @@ const ParticlesBackground: React.FC = () => {
         await loadSlim(engine);
     }, []);
 
-    const particlesLoaded = useCallback(async (container: Container | null) => {
+    const particlesLoaded = useCallback(async (container: Container | undefined) => {
         if (container) {
             console.log(container);
         }

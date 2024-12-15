@@ -32,7 +32,7 @@ export function Services() {
   )
 }
 
-function ServiceCard({ icon: Icon, title, description, index }) {
+function ServiceCard({ icon: Icon, title, description, index }: { icon: React.ComponentType<{ className?: string }>, title: string, description: string, index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -48,4 +48,3 @@ function ServiceCard({ icon: Icon, title, description, index }) {
     </motion.div>
   )
 }
-
