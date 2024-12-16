@@ -15,20 +15,20 @@ const works: Work[] = [
   {
     "title": "Dental Clinic Website",
     "description": "Explore the official website of a trusted dental clinic in Himachal Pradesh, dedicated to delivering exceptional oral healthcare. The website highlights a range of services, including general dentistry, cosmetic treatments, orthodontics, and dental surgeries. It also showcases state-of-the-art equipment used for precise and painless procedures. Visitors can easily access contact details to schedule appointments or inquire about treatments, ensuring a seamless and informative experience.",
-    "image": "/placeholder.svg",
-    "liveUrl": "https://example-dentalclinic.com"
+    "image": "/images/works/dental.jpg",
+    "liveUrl": "https://sunrisedental.in"
   },
   {
     "title": "Stunning Photography Website",
     "description": "Dive into the captivating world of photography through this personal website of a talented photographer based in Jammu & Kashmir. The site showcases a profound collection of their finest works, including breathtaking landscapes, portraits, and event photography. It also highlights professional services offered for weddings, travel shoots, and commercial projects. With a seamless design and easy navigation, visitors can explore galleries and connect for bookings effortlessly.",
-    "image": "/placeholder.svg",
+    "image": "/images/works/photography.jpg",
     "liveUrl": "https://example-photography.com"
   },
   {
     "title": "Personal Portfolio Website",
     "description": "Discover the personal portfolio of a passionate computer science undergraduate student, designed to showcase their technical skills and innovative projects. The website features detailed descriptions of completed work, including web development, data science, and machine learning applications. It also highlights core competencies in programming languages, frameworks, and tools, providing a comprehensive view of their expertise. An intuitive layout allows visitors to explore projects, view achievements, and connect for potential collaborations or opportunities.",
-    "image": "/placeholder.svg",
-    "liveUrl": "https://example-portfolio.com"
+    "image": "/images/works/portfolio.png",
+    "liveUrl": "https://harishgarg.tech"
   },
 ];
 
@@ -67,7 +67,7 @@ export function Works(): JSX.Element {
           Our Past Works
         </h2>
 
-        <div className='relative overflow-hidden' style={{ height: '500px' }}>
+        <div className="relative overflow-hidden h-[700px] md:h-[400px]">
           {works.map((work, index) => (
             <WorkCard
               key={index}
@@ -78,13 +78,15 @@ export function Works(): JSX.Element {
             />
           ))}
           <button
-            className='absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-purple-950 bg-opacity-40 p-1 md:p-2 rounded-full text-white opacity-70 hover:opacity-100 transition-opacity duration-300'
+            className='absolute left-0.5 md:left-1 top-44 transform -translate-y-1/2 bg-purple-950 
+            bg-opacity-40 p-1 md:p-2 rounded-full text-white opacity-70 hover:opacity-100 transition-opacity duration-300'
             onClick={prevSlide}
           >
             <ChevronLeft size={18} />
           </button>
           <button
-            className='absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-purple-950 bg-opacity-40 p-1 md:p-2 rounded-full text-white opacity-70 hover:opacity-100 transition-opacity duration-300'
+            className='absolute right-0.5 md:right-1 top-44 transform -translate-y-1/2 bg-purple-950 
+            bg-opacity-40 p-1 md:p-2 rounded-full text-white opacity-70 hover:opacity-100 transition-opacity duration-300'
             onClick={nextSlide}
           >
             <ChevronRight size={18} />
@@ -121,10 +123,11 @@ function WorkCard({ work, isActive, index, currentIndex }: { work: Work; isActiv
     >
       <div className='bg-purple-900 bg-opacity-20 backdrop-blur-md p-3 md:p-6 rounded-xl shadow-xl 
       transition-all duration-300 flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6'>
-        <div className='w-full md:w-1/2 flex justify-center mb-3 md:mb-0'>
-          <Image src={work.image} alt={work.title} width={320} height={240} className='rounded-lg shadow-md transition-transform duration-300 hover:scale-105 w-full h-auto' />
+        <div className='w-full md:w-1/2 flex justify-center md:mb-0'>
+          <Image src={work.image} layout="responsive" alt={work.title} width={420} height={320} 
+          className='rounded-lg shadow-md transition-transform duration-300 hover:scale-105 w-full h-auto' />
         </div>
-        <div className='w-full md:w-1/2 text-justify'>
+        <div className='w-full md:w-1/2 text-left md:text-justify'>
           <h3 className='text-2xl md:text-3xl font-semibold mb-2 font-poppins text-purple-200'>{work.title}</h3>
           &nbsp;
           <p className='text-purple-300 mb-3 text-sm md:text-base'>{work.description}</p>
