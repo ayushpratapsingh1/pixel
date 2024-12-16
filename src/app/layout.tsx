@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
       <Head>
-        <link rel="icon" href="./public/icons/logo.png" />
+        <link rel="icon" href="/icons/logo.png" type="image/x-icon" />
       </Head>
       <body className="bg-black-900 text-white font-inter">{children}</body>
     </html>
