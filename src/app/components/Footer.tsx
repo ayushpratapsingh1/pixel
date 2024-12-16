@@ -1,9 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Github, Mail, Linkedin } from 'lucide-react'
 
 export function Footer() {
+  // Define links
+  const links = {
+    github: 'https://github.com/Pixel-Web-Dev',
+    linkedin: 'https://www.linkedin.com/company/pixel-web-dev/',
+    email: 'mailto:pixeltriodev@gmail.com',
+  }
+
   return (
     <footer className="bg-black bg-opacity-50 backdrop-blur-md text-white py-8">
       <div className="container mx-auto px-6">
@@ -27,7 +34,10 @@ export function Footer() {
             <ul className="space-y-2">
               {['About', 'Services', 'Works', 'Contact'].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="hover:text-purple-300 transition duration-300">
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="hover:text-purple-300 transition duration-300"
+                  >
                     {item}
                   </a>
                 </li>
@@ -42,11 +52,31 @@ export function Footer() {
           >
             <h4 className="text-lg font-semibold mb-2 font-poppins">Follow Us</h4>
             <div className="flex justify-center md:justify-end space-x-4">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
-                <a key={index} href="#" className="hover:text-purple-300 transition duration-300">
-                  <Icon size={24} />
-                </a>
-              ))}
+              {/* GitHub Link */}
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-slate-700 hover:scale-110 transition duration-300"
+              >
+                <Github size={24} />
+              </a>
+              {/* LinkedIn Link */}
+              <a
+                href={links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-700 hover:scale-110 transition duration-300"
+              >
+                <Linkedin size={24} />
+              </a>
+              {/* Mail Link */}
+              <a
+                href={links.email}
+                className="hover:text-red-600 hover:scale-110 transition duration-300"
+              >
+                <Mail size={24} />
+              </a>
             </div>
           </motion.div>
         </div>
@@ -62,4 +92,3 @@ export function Footer() {
     </footer>
   )
 }
-
