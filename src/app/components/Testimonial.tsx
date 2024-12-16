@@ -11,19 +11,19 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    text: 'Pixel Dev transformed our online presence. Their team\'s creativity and technical expertise resulted in a website that perfectly represents our brand and has significantly increased our customer engagement.',
-    author: 'Jane Doe',
-    position: 'CEO, TechInnovate Inc.',
+    "text": "Pixel Dev transformed my vision into reality with an outstanding website for my dental clinic. Their ability to design a professional and informative platform has made it easier for patients to learn about our services and book appointments. The website beautifully showcases our cutting-edge equipment and treatments.",
+    "author": "Dr. Suraj Sharma",
+    "position": "Dentist, Sunrise Dental Clinic"
   },
   {
-    text: 'Working with Pixel Dev was a game-changer for our startup. They delivered a stunning logo and website that truly captured our vision. Their attention to detail and commitment to excellence is unmatched.',
-    author: 'John Smith',
-    position: 'Founder, NextGen Solutions',
+    "text": "As a photographer, my website needed to reflect the passion and artistry of my work. Pixel Dev delivered beyond expectations, creating a visually stunning and easy-to-navigate portfolio that showcases my landscapes, portraits, and event photography. Their attention to detail and seamless design have made it effortless for clients to connect and book my services.",
+    "author": "Hari Mishra",
+    "position": "Photographer, HariOM Photography"
   },
   {
-    text: 'The team at Pixel Dev went above and beyond our expectations. They not only created a beautiful website but also provided valuable insights to improve our overall digital strategy. Highly recommended!',
-    author: 'Emily Johnson',
-    position: 'Marketing Director, GreenEarth Co.',
+    "text": "I wanted a website to present my technical skills and projects professionally, and Pixel Dev exceeded my expectations. They created a sleek, modern portfolio that highlights my work in web development, machine learning, and data science. The website's intuitive layout and design have been instrumental in showcasing my abilities to recruiters and collaborators.",
+    "author": "Harish Garg",
+    "position": "Computer Science Student"
   },
 ];
 
