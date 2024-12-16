@@ -1,114 +1,147 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect ,JSX} from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'react-feather';
 
 interface Work {
   title: string;
   description: string;
-  fullDescription: string;
   image: string;
   liveUrl: string;
 }
 
 const works: Work[] = [
   {
-    title: 'Modern E-commerce Website',
-    description: 'A fully responsive online store with seamless user experience.',
-    fullDescription: 'This project showcases a state-of-the-art e-commerce platform...',
-    image: '/placeholder.svg',
-    liveUrl: 'https://example-ecommerce.com',
+    "title": "Dental Clinic Website",
+    "description": "Explore the official website of a trusted dental clinic in Himachal Pradesh, dedicated to delivering exceptional oral healthcare. The website highlights a range of services, including general dentistry, cosmetic treatments, orthodontics, and dental surgeries. It also showcases state-of-the-art equipment used for precise and painless procedures. Visitors can easily access contact details to schedule appointments or inquire about treatments, ensuring a seamless and informative experience.",
+    "image": "/placeholder.svg",
+    "liveUrl": "https://example-dentalclinic.com"
   },
   {
-    title: 'Tech Startup Branding',
-    description: 'Complete brand identity including logo and website design.',
-    fullDescription: 'We developed a comprehensive brand identity for a cutting-edge tech startup...',
-    image: '/placeholder.svg',
-    liveUrl: 'https://example-startup.com',
+    "title": "Stunning Photography Website",
+    "description": "Dive into the captivating world of photography through this personal website of a talented photographer based in Jammu & Kashmir. The site showcases a profound collection of their finest works, including breathtaking landscapes, portraits, and event photography. It also highlights professional services offered for weddings, travel shoots, and commercial projects. With a seamless design and easy navigation, visitors can explore galleries and connect for bookings effortlessly.",
+    "image": "/placeholder.svg",
+    "liveUrl": "https://example-photography.com"
   },
   {
-    title: 'Portfolio for Photographer',
-    description: 'Elegant portfolio showcasing the artist’s best work.',
-    fullDescription: 'This project features a minimalist yet striking portfolio website...',
-    image: '/placeholder.svg',
-    liveUrl: 'https://example-portfolio.com',
+    "title": "Personal Portfolio Website",
+    "description": "Discover the personal portfolio of a passionate computer science undergraduate student, designed to showcase their technical skills and innovative projects. The website features detailed descriptions of completed work, including web development, data science, and machine learning applications. It also highlights core competencies in programming languages, frameworks, and tools, providing a comprehensive view of their expertise. An intuitive layout allows visitors to explore projects, view achievements, and connect for potential collaborations or opportunities.",
+    "image": "/placeholder.svg",
+    "liveUrl": "https://example-portfolio.com"
   },
 ];
 
-export function Works() {
-  const [selectedWork, setSelectedWork] = useState<Work | null>(null);
+export function Works(): JSX.Element {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % works.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + works.length) % works.length);
+  };
+
+  useEffect(() => {
+    if (!isHovering) {
+      const timer = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % works.length);
+      }, 10000);
+
+      return () => clearInterval(timer);
+    }
+  }, [isHovering]);
 
   return (
-    <section id="projects" className="py-20">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12 font-poppins text-shadow"
-        >
-          Our Projects
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section
+      id='projects'
+      className='py-8 md:py-16'
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <div className='container mx-auto px-4 md:px-6 mt-4'>
+        <h2 className='text-2xl md:text-4xl font-bold text-center mb-6 md:mb-10 font-poppins 
+        text-white text-shadow'>
+          Our Past Works
+        </h2>
+
+        <div className='relative overflow-hidden' style={{ height: '500px' }}>
           {works.map((work, index) => (
-            <WorkCard key={index} work={work} onClick={() => setSelectedWork(work)} />
+            <WorkCard
+              key={index}
+              work={work}
+              isActive={index === currentIndex}
+              index={index}
+              currentIndex={currentIndex}
+            />
+          ))}
+          <button
+            className='absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-purple-950 bg-opacity-40 p-1 md:p-2 rounded-full text-white opacity-70 hover:opacity-100 transition-opacity duration-300'
+            onClick={prevSlide}
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            className='absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-purple-950 bg-opacity-40 p-1 md:p-2 rounded-full text-white opacity-70 hover:opacity-100 transition-opacity duration-300'
+            onClick={nextSlide}
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+
+        <div className='flex justify-center mt-6'>
+          {works.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full mx-1 ${
+                index === currentIndex ? 'bg-purple-700' : 'bg-purple-300'
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            />
           ))}
         </div>
       </div>
-      <AnimatePresence>
-        {selectedWork && (
-          <WorkDetail work={selectedWork} onClose={() => setSelectedWork(null)} />
-        )}
-      </AnimatePresence>
     </section>
   );
 }
 
-function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-purple-900 bg-opacity-30 backdrop-blur p-6 rounded-lg shadow-xl text-center hover:bg-purple-800 hover:bg-opacity-50 transition-colors duration-300"
-      onClick={onClick}
-    >
-      <div className="flex justify-center mb-4">
-        <Image src={work.image} alt={work.title} width={48} height={48} />
-      </div>
-      <h3 className="text-xl font-semibold mb-2 font-poppins text-purple-100">{work.title}</h3>
-      <p className="text-purple-200">{work.description}</p>
-    </motion.div>
-  );
-}
-
-function WorkDetail({ work, onClose }: { work: Work; onClose: () => void }) {
-  if (!work) return null;
+function WorkCard({ work, isActive, index, currentIndex }: { work: Work; isActive: boolean; index: number; currentIndex: number }): JSX.Element {
+  const position = index - currentIndex;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4"
+    <div
+      className={`absolute top-0 left-0 w-full transition-all duration-500 ease-in-out ${
+        isActive ? 'opacity-100 translate-x-0' : 'opacity-0'
+      }`}
+      style={{
+        transform: `translateX(${position * 100}%)`,
+      }}
     >
-      <div className="bg-white p-6 rounded-lg shadow-xl relative">
-        <button onClick={onClose} className="absolute top-4 right-4 text-black hover:text-purple-300 transition-colors">
-          Close
-        </button>
-        <Image src={work.image} alt={work.title} width={400} height={300} className="rounded-lg mb-4" />
-        <h3 className="text-2xl font-bold mb-4 font-poppins">{work.title}</h3>
-        <p className="text-gray-700 mb-6">{work.fullDescription}</p>
-        <a
-          href={work.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold hover:bg-purple-700 transition duration-300"
-        >
-          Visit Live Site
-        </a>
+      <div className='bg-purple-900 bg-opacity-20 backdrop-blur-md p-3 md:p-6 rounded-xl shadow-xl 
+      transition-all duration-300 flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6'>
+        <div className='w-full md:w-1/2 flex justify-center mb-3 md:mb-0'>
+          <Image src={work.image} alt={work.title} width={320} height={240} className='rounded-lg shadow-md transition-transform duration-300 hover:scale-105 w-full h-auto' />
+        </div>
+        <div className='w-full md:w-1/2 text-justify'>
+          <h3 className='text-2xl md:text-3xl font-semibold mb-2 font-poppins text-purple-200'>{work.title}</h3>
+          &nbsp;
+          <p className='text-purple-300 mb-3 text-sm md:text-base'>{work.description}</p>
+          &nbsp;
+          <a
+            href={work.liveUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline-block px-4 md:px-6 py-1 md:py-2 bg-gradient-to-r 
+            from-purple-900 to-purple-800 text-white rounded-full 
+            hover:scale-110 transition-all duration-300 shadow-lg 
+            hover:shadow-purple-950/50 text-sm md:text-base font-medium'
+          >
+            View Demo
+          </a>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

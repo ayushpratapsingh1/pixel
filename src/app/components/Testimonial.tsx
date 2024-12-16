@@ -39,30 +39,37 @@ export function Testimonial() {
   }, []);
 
   return (
-    <div className="testimonial-container p-8 bg-gray-100 rounded-md shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-6">What Our Clients Say</h2>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <p className="text-lg italic text-gray-700">
-            &quot;{testimonials[currentIndex].text}&quot;
-          </p>
-          <div className="mt-4">
-            <h3 className="text-md font-semibold text-gray-800">
-              {testimonials[currentIndex].author}
-            </h3>
-            <p className="text-sm text-gray-600">
-              {testimonials[currentIndex].position}
+    <div className="flex justify-center items-center p-4 sm:p-8">
+      <div className="testimonial-container relative max-w-4xl w-full p-6 sm:p-8 bg-purple-900 
+      bg-opacity-20 
+      backdrop-blur-md rounded-lg shadow-lg transition-transform duration-300 transform 
+      hover:scale-105 mx-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
+          What Our Clients Say
+        </h2>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <p className="text-md md:text-lg sm:text-xl italic text-gray-300 leading-relaxed">
+              &quot;{testimonials[currentIndex].text}&quot;
             </p>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+            <div className="mt-4">
+              <h3 className="text-md md:text-lg font-semibold text-white">
+                {testimonials[currentIndex].author}
+              </h3>
+              <p className="text-sm text-gray-400">
+                {testimonials[currentIndex].position}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

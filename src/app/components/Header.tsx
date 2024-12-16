@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, User, Briefcase, FolderOpen, MessageSquare, Menu, X } from 'lucide-react';
+import { Home, User, Briefcase, FolderOpen, MessageSquare, Menu,Zap, X } from 'lucide-react';
 import Link from 'next/link';
 
 const Header = () => {
@@ -13,7 +13,7 @@ const Header = () => {
   // Handle scroll to detect active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'projects', 'contact'];
+      const sections = ['home', 'about', 'services', 'approach', 'projects'];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -108,8 +108,8 @@ const Header = () => {
             { id: 'home', icon: Home },
             { id: 'about', icon: User },
             { id: 'services', icon: Briefcase },
+            { id: 'approach', icon: Zap },
             { id: 'projects', icon: FolderOpen },
-            { id: 'contact', icon: MessageSquare },
           ].map(({ id, icon: Icon }) => (
             <li key={id}>
               <Link href={`#${id}`} className="focus:outline-none">
@@ -130,7 +130,7 @@ const Header = () => {
 
         {/* Contact Button */}
         <motion.button
-          className="px-4 py-2 bg-purple-600 rounded-full text-white font-semibold hidden md:block"
+          className="px-4 py-2 bg-purple-700 rounded-full text-white font-semibold hidden md:block"
           whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgb(147, 51, 234)' }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
@@ -156,8 +156,8 @@ const Header = () => {
                 { id: 'home' },
                 { id: 'about' },
                 { id: 'services' },
+                { id: 'approach' },
                 { id: 'projects' },
-                { id: 'contact' },
               ].map(({ id }) => (
                 <li key={id} className="w-full text-center">
                   <Link
