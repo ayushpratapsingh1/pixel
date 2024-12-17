@@ -3,6 +3,7 @@
 import { useState, useEffect ,JSX} from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'react-feather';
+import { motion } from 'framer-motion';
 
 interface Work {
   title: string;
@@ -62,10 +63,10 @@ export function Works(): JSX.Element {
       onMouseLeave={() => setIsHovering(false)}
     >
       <div className='container mx-auto px-4 md:px-6'>
-        <h2 className='text-2xl md:text-4xl font-bold text-center mb-6 md:mb-10 font-poppins 
+        <motion.h2 className='text-2xl md:text-4xl font-bold text-center mb-6 md:mb-10 font-poppins 
         text-white text-shadow'>
           Our Past Works
-        </h2>
+        </motion.h2>
 
         <div className="relative overflow-hidden h-[550px] md:h-[400px]">
           {works.map((work, index) => (

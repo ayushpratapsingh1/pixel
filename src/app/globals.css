@@ -7,7 +7,14 @@
   --background-start-rgb: 10, 0, 20;
   --background-end-rgb: 30, 0, 60;
 }
+::selection {
+  background: none;
+  color: inherit;
+}
 
+body {
+  user-select: none;
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: black;
